@@ -55,7 +55,6 @@ class Container implements ContainerInterface
     {
         $this->parameters = (array) $parameters;
         $this->services   = [];
-        $this->factories  = [];
         $this->tags       = [];
     }
 
@@ -63,7 +62,7 @@ class Container implements ContainerInterface
      * Add a new parameter.
      *
      * @param string $name
-     * @param mixed  $value
+     * @param mixed $value
      *
      * @return $this
      */
@@ -94,7 +93,7 @@ class Container implements ContainerInterface
      * Returns the value of the given parameter if exists. Otherwise the default value is returned.
      *
      * @param string $name
-     * @param mixed  $default
+     * @param mixed $default
      *
      * @return mixed
      */
@@ -105,6 +104,20 @@ class Container implements ContainerInterface
         }
 
         return $default;
+    }
+
+    /**
+     * Set a new parameter
+     *
+     * @param array $params
+     *
+     * @return $this
+     */
+    public function setParams(array $params)
+    {
+        $this->parameters = $params;
+
+        return $this;
     }
 
     /**
@@ -140,7 +153,7 @@ class Container implements ContainerInterface
     /**
      * Adds a service factory.
      *
-     * @param string   $id
+     * @param string $id
      * @param callable $factory
      *
      * @return Definition
